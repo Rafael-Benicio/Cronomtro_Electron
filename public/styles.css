@@ -20,7 +20,7 @@ body{
 }
 
 .container{
-    border:1px solid #fff;
+    border: none;
     width: 100%;
     max-width: 150px;
 }
@@ -35,4 +35,21 @@ body{
     max-width:50px ;
     height: 100%;
     max-height: 100px;
+}
+
+.container input{
+    background-color: transparent;
+    color: lawngreen;
+    font-size: 18px;
+    font-size: 125px;
+    align-items: center;
+    justify-content: center;
+    width: inherit;
+    border: none;
+}
+
+#root div p{
+    margin: 0 auto;
+    color: lawngreen;
+    font-size: 125px;
 }
