@@ -40,16 +40,20 @@ body{
 .container input{
     background-color: transparent;
     color: lawngreen;
-    font-size: 18px;
-    font-size: 125px;
+    font-size: 110px;
     align-items: center;
     justify-content: center;
     width: inherit;
-    border: none;
+    text-align-last: center;
 }
 
 #root div p{
-    margin: 0 auto;
+    margin-top:auto ;
+    margin-bottom:auto ;
+    align-items: center;
     color: lawngreen;
-    font-size: 125px;
+    font:400 13px Arial;
+    justify-content: center;
+    font-size: 110px;
+
 }

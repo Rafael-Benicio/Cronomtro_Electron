@@ -36,9 +36,15 @@ function AppendRoot(){
 }
 
 function AppendInput(){
-    div.h.appendChild(input.h).setAttribute('type','text')
-    div.m.appendChild(input.m).setAttribute('type','text')
-    div.s.appendChild(input.s).setAttribute('type','text')
+    input.h.setAttribute('type','text')
+    input.h.setAttribute('maxlength','2')
+    input.m.setAttribute('type','text')
+    input.m.setAttribute('maxlength','2')
+    input.s.setAttribute('type','text')
+    input.s.setAttribute('maxlength','2')
+    div.h.appendChild(input.h)
+    div.m.appendChild(input.m)
+    div.s.appendChild(input.s)
 }
 
 function AppendP(){
@@ -48,14 +54,43 @@ function AppendP(){
 
 function Inicia(){
     if(!Pau){
-        Pau=true
-    }else{
-        req.h=input.h.value
-        req.m=input.m.value
-        req.s=input.s.value
+        try {
+            req.h=Number(input.h.value)
+            req.m=Number(input.m.value)
+            req.s=Number(input.s.value)  
+            if(isNaN(req.h)){
+                req.h=0
+            }
+            if(isNaN(req.m)){
+                req.m=0
+            }
+            if(isNaN(req.s)|| req.s<=0 ){
+                req.s=1
+            }
+        } catch (error) {
+            alert('Desculpe, mas ouve um erro na execução. Verifique se os valores passados estão corretos')
+        }
+        if(req.m>=60){
+            req.m=60
+        }
+        if(req.s>=60){
+            req.s=60
+        }
+        if(req.h<=-1){
+            req.h=0
+        }
+        if(req.m<=-1){
+            req.m=0
+        }
+        if(req.s<=-1){
+            req.s=0
+        }
         Remove()
         AppendP()
         Toca()
+    }else{
+        Pau=false
+        console.log(Pau);
     }
 }
 
@@ -67,60 +102,63 @@ function Remove(){
 }
 
 function Toca(){
-    time+=1
-    if(time==60){
-        time=0
-        req.s-=1
-        if(req.s<=0 && req.m>0){
-            req.m-=1
-            req.s=60
+    if(!Pau){
+        time+=1
+        if(time==60){
+            time=0
+            req.s-=1
+            if(req.s<=0 && req.m>0){
+                req.m-=1
+                req.s=60
+            }
+            if(req.s==0 && req.m==0 && req.h>0){
+                req.h-=1
+                req.m=59
+                req.s=60
+            }
+    
+            if(req.s==0 && req.m==0 && req.h==0){
+                Remove()
+                AppendRoot()
+                AppendInput()
+            }
         }
-        if(req.s==0 && req.m==0 && req.h>0){
-            req.h-=1
-            req.m=59
-            req.s=60
-        }
+        if(req.h<10)
+            Show.h="0"+req.h
+        else
+            Show.h=req.h
+        if(req.m<10)
+            Show.m="0"+req.m
+        else
+            Show.m=req.m
+        if(req.s<10)
+            Show.s="0"+req.s
+        else
+            Show.s=req.s
 
-        if(req.s==0 && req.m==0 && req.h==0){
-            Remove()
-            AppendRoot()
-            AppendInput()
-        }
-    }
-    if(req.h<10)
-        Show.h="0"+req.h
-    else
-        Show.h=req.h
-    if(req.m<10)
-        Show.m="0"+req.m
-    else
-        Show.m=req.m
-    if(req.s<10)
-        Show.s="0"+req.s
-    else
-        Show.s=req.s
-
-
-    if(Pau){
         p.innerHTML=`${Show.h}:${Show.m}:${Show.s}`
     }
-
-    ani =requestAnimationFrame(Toca)
-
 }
 
 function Pausar(){
-    Pau=false
+    Pau=true
     console.log(Pau);
 }
 
 function Parar(){
+    Pau=false
     Remove()
     AppendRoot()
     AppendInput()
-    cancelAnimationFrame(ani)
+}
+
+function control(){
+    requestAnimationFrame(control)
+    requestAnimationFrame(Toca)
 }
 
 AppendRoot()
 
 AppendInput()
+
+control()
