@@ -37,10 +37,13 @@ function AppendRoot(){
 
 function AppendInput(){
     input.h.setAttribute('type','text')
+    input.h.setAttribute('placeholder','00')
     input.h.setAttribute('maxlength','2')
     input.m.setAttribute('type','text')
+    input.m.setAttribute('placeholder','00')
     input.m.setAttribute('maxlength','2')
     input.s.setAttribute('type','text')
+    input.s.setAttribute('placeholder','00')
     input.s.setAttribute('maxlength','2')
     div.h.appendChild(input.h)
     div.m.appendChild(input.m)

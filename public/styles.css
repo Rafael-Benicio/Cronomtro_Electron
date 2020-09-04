@@ -45,6 +45,7 @@ body{
     justify-content: center;
     width: inherit;
     text-align-last: center;
+    border: none;
 }
 
 #root div p{
@@ -55,5 +56,6 @@ body{
     font:400 13px Arial;
     justify-content: center;
     font-size: 110px;
+    padding-left:15px;
 
 }
