@@ -19,6 +19,11 @@ const req={
     s:0,
 }
 
+const label={
+    h:document.createElement('label'),
+    m:document.createElement('label'),
+}
+
 const Show={
     h:"",m:"",s:"",
 }
@@ -31,7 +36,9 @@ let ani
 
 function AppendRoot(){
     root.appendChild(div.h).setAttribute('class','container')
+    root.appendChild(label.h).innerHTML=":"
     root.appendChild(div.m).setAttribute('class','container')
+    root.appendChild(label.m).innerHTML=":"
     root.appendChild(div.s).setAttribute('class','container')
 }
 
@@ -102,6 +109,8 @@ function Remove(){
     div.m.remove()
     div.s.remove()
     div.t.remove()
+    label.h.remove()
+    label.m.remove()
 }
 
 function Toca(){
