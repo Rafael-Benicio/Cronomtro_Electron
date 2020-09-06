@@ -1,14 +1,18 @@
 const electron=require('electron')
 
-const { app ,BrowserWindow , globalShortcut } = require('electron')
-
+const { app ,BrowserWindow , globalShortcut} = require('electron')
 
 
 function createWindow(){
     
     const win =new BrowserWindow({
-        width:500,
-        height:150,
+        minWidth:500,
+        minHeight:150,
+        maxHeight:150,
+        maxWidth:500,
+        title:"Crônos",
+        icon: './src/icon/icon.png',
+        autoHideMenuBar:true,
         webPreferences:{
             nodeIntegration:true,
         }

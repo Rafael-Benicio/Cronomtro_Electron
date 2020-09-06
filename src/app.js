@@ -1,4 +1,12 @@
+let time=0
+let Pau=false
+let audioP='../src/mus/song.mp3'
+
 const root = document.getElementById('root')
+
+const audio=document.createElement('audio')
+
+const p=document.createElement('p')
 
 const div={
     h:document.createElement('div'),
@@ -28,18 +36,16 @@ const Show={
     h:"",m:"",s:"",
 }
 
-const p=document.createElement('p')
-
-let time=0
-let Pau=false
-let ani
-
 function AppendRoot(){
     root.appendChild(div.h).setAttribute('class','container')
     root.appendChild(label.h).innerHTML=":"
     root.appendChild(div.m).setAttribute('class','container')
     root.appendChild(label.m).innerHTML=":"
     root.appendChild(div.s).setAttribute('class','container')
+}
+
+function AppendAudio(){
+    root.appendChild(audio).setAttribute('src', audioP)
 }
 
 function AppendInput(){
@@ -97,6 +103,7 @@ function Inicia(){
         }
         Remove()
         AppendP()
+        AppendAudio()
         Toca()
     }else{
         Pau=false
@@ -111,6 +118,10 @@ function Remove(){
     div.t.remove()
     label.h.remove()
     label.m.remove()
+}
+
+function RemoveAudio(){
+    audio.remove()
 }
 
 function Toca(){
@@ -131,6 +142,9 @@ function Toca(){
     
             if(req.s==0 && req.m==0 && req.h==0){
                 Remove()
+                // começar audio em x tempos
+                // audio.currentTime=60
+                audio.play()
                 AppendRoot()
                 AppendInput()
             }
@@ -154,6 +168,7 @@ function Toca(){
 
 function Pausar(){
     Pau=true
+    RemoveAudio()
     console.log(Pau);
 }
 
@@ -168,6 +183,15 @@ function control(){
     requestAnimationFrame(control)
     requestAnimationFrame(Toca)
 }
+
+function MusicaP(){
+    let varAud= confirm("Quer usar uma musica própria?")
+    if(varAud){
+        
+    }
+}
+
+MusicaP()
 
 AppendRoot()
 
