@@ -1,7 +1,7 @@
 {
-  "name": "Electron",
+  "name": "Crônos",
   "version": "1.0.0",
-  "description": "",
+  "description": "Uma simples cronometro",
   "main": "main.js",
   "dependencies": {},
   "devDependencies": {
@@ -9,9 +9,19 @@
     "electron-builder": "^22.8.0"
   },
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron main.js",
+    "dist:linux":"electron-builder --linux"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "repository": "https://github.com/Rafael-Benicio/Cronomtro_Electron",
+  "author": "Rafael-Benicio",
+  "license": "MIT",
+  "build":{
+    "appId":"leafar.sonorc",
+    "linux":{
+      "target":[
+        "deb"
+      ],
+      "category":"Utility"
+    }
+  }
 }
