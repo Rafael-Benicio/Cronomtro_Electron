@@ -40,6 +40,14 @@ const Show = {
 }
 
 
+addEventListener('keydown',(e)=>{
+    let key=e.keyCode
+    if(key ==13)Inicia()
+    if(key ==8)Pausar()
+    if(key ==123)Parar()
+})
+
+
 function AppendRoot() {
     root.appendChild(div.h).setAttribute('class', 'container')
     root.appendChild(label.h).innerHTML = ":"
@@ -232,3 +240,6 @@ try {
     console.log('no');  
 }
 
+// 13:enter
+// 8:backspace
+// 123:f12
